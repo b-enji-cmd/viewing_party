@@ -18,7 +18,6 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'pry'
-  gem 'shoulda-matchers', '~> 3.1'
   gem 'orderly'
   gem 'active_designer'
   gem 'travis'
@@ -36,6 +35,7 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
