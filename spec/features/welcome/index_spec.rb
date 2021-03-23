@@ -11,7 +11,7 @@ RSpec.describe 'Welcome Page' do
     expect(page).to have_content(description)
   end
 
-  it 'Contains button to login that bring me to user dashboard' do
+  it 'Contains button to sign in' do
     visit root_path
 
     expect(page).to have_button("Sign In")
@@ -21,26 +21,5 @@ RSpec.describe 'Welcome Page' do
     visit root_path
 
     expect(page).to have_link("New to Viewing Party? Register Here")
-
-    click_link("New to Viewing Party? Register Here")
-
-    expect(current_path).to eq(registration_path)
-  end
-
-  it 'When I fill out new user form correctly, I am brought to user Dashboard' do
-    visit root_path
-
-    click_link("New to Viewing Party? Register Here")
-
-    email = "example@email.com"
-    password = "turingschool"
-
-    fill_in 'user[email]', with: email
-    fill_in "user[password]", with: password
-    fill_in "user[password_confirmation]", with: password
-
-    click_on "Register"
-
-    expect(current_path).to eq(dashboard_path)
   end
 end
