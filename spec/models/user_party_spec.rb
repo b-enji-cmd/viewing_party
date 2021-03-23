@@ -1,7 +1,8 @@
-require 'test_helper'
+require 'rails_helper'
 
-class UserPartyTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+RSpec.describe UserParty, type: :model do
+  describe "relationships" do
+    it { should belong_to :user }
+    it { should belong_to :party }
+  end
 end
