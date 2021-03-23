@@ -1,4 +1,4 @@
 class UserParty < ApplicationRecord
-  belongs_to :users
-  belongs_to :parties
+  belongs_to :user
+  belongs_to :party
 end
