@@ -28,10 +28,10 @@ RSpec.describe 'Welcome Page' do
 
     email = "example@email.com"
     password = "turingschool"
-
-    fill_in :email, with: email
-    fill_in :password, with: password
-    fill_in :password_confirmation, with: password
+    
+    fill_in 'user[email]', with: email
+    fill_in "user[password]", with: password
+    fill_in "user[password_confirmation]", with: password
 
     click_on "Register"
 
