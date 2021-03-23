@@ -3,10 +3,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(session[:user_id])
+  end
+
   def create
     @user = User.create(user_params)
     if @user.save
-      redirect_to dashboard_path(@user)
+      session[:user_id] = @user.id
+      redirect_to dashboard_path
     else
       flash[:error] = @user.errors.full_messages.to_sentance
       render :new
