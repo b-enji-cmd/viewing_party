@@ -15,19 +15,18 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'bootsnap'
 gem 'jbuilder', '~> 2.5'
+gem 'travis'
 
 group :development, :test do
   gem 'pry'
   gem 'orderly'
   gem 'active_designer'
-  gem 'travis'
+  gem 'rubocop-rails'
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rubocop-rails'
-  gem 'travis'
 end
 
 group :test do
