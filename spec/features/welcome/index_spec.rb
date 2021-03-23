@@ -18,6 +18,6 @@ RSpec.describe 'Welcome Page' do
 
     click_link("New to Viewing Party? Register Here")
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(registration_path)
   end
 end
