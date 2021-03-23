@@ -15,10 +15,6 @@ RSpec.describe 'Welcome Page' do
     visit root_path
 
     expect(page).to have_button("Sign In")
-
-    click_button("Sign In")
-
-    expect(current_path).to eq(dashboard_path)
   end
 
   it 'Contains link to register that brings me to registration form' do
