@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/b-enji-cmd/viewing_party.svg?branch=main)](https://travis-ci.com/b-enji-cmd/viewing_party)
 # Viewing Party
 
 This is the base repo for the [viewing party project](https://backend.turing.io/module3/projects/viewing_party) used for Turing's Backend Module 3.
