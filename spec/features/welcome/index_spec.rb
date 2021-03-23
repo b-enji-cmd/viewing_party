@@ -20,4 +20,21 @@ RSpec.describe 'Welcome Page' do
 
     expect(current_path).to eq(registration_path)
   end
+
+  it 'When I fill out new user form correctly, I am brought to user Dashboard' do
+    visit root_path
+
+    click_link("New to Viewing Party? Register Here")
+
+    email = "example@email.com"
+    password = "turingschool"
+
+    fill_in :email, with: email
+    fill_in :password, with: password
+    fill_in :password_confirmation, with: password
+
+    click_on "Register"
+
+    expect(current_path).to eq(dashboard_path)
+  end
 end
