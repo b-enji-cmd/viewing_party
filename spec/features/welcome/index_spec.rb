@@ -11,4 +11,13 @@ RSpec.describe 'Welcome Page' do
     expect(page).to have_content(description)
   end
 
+  it 'Contains link to register that brings me to registration form' do
+    visit root_path
+
+    expect(page).to have_link("New to Viewing Party? Register Here")
+
+    click_link("New to Viewing Party? Register Here")
+
+    expect(current_path).to eq(new_user_path)
+  end
 end
