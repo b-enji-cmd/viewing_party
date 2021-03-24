@@ -31,8 +31,8 @@ RSpec.describe 'User Registration' do
 
     click_on "Register"
 
-    expect(current_path).to eq(registration_path)
-
+    expect(current_path).to eq(users_path)
+    
     expect(page).to have_content("Email can't be blank")
     expect(page).to have_content("Password can't be blank")
   end
