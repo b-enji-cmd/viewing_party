@@ -8,9 +8,13 @@
 			<%= f.email_field :email, placeholder: 'Search by email' %>
 			<%= f.submit 'Add Friend' %>
 		<% end %>
-
-		 <%@user.friends.each do |friend| %>
+		<% if !current_user.user_friends.empty? %>
+			<%current_user.user_friends.each do |friend| %>
+				<%= User.find_by(id: friend.friend_id).email %>
 			<% end %>
+		<% else %>
+			<p>You currently have no friends.</p>
+		<% end %>	
 	</section>
 
 	<section class="viewing-parties">
