@@ -1,12 +1,20 @@
 <h1>Welcome <%= @user.email %>!</h1>
+
 <%= button_to "Discover Movies", discover_path, method: :get %>
-<section class="friends-section">
-	<p>Placeholder!</p>
- <%@user.friends.each do |friend| %>
-	<% end %>
-</section>
-<section class="viewing-parties">
-	<p>Placeholder!</p>
-	<%@user.parties.each do |party| %>
-	<% end %>
-</section>
+
+	<section class="friends-section">
+		<p>Friends</p>
+		<%= form_with url: user_friends_path, local: true do |f| %>
+			<%= f.email_field :email, placeholder: 'Search by email' %>
+			<%= f.submit 'Add Friend' %>
+		<% end %>
+
+		 <%@user.friends.each do |friend| %>
+			<% end %>
+	</section>
+
+	<section class="viewing-parties">
+		<p>Placeholder!</p>
+			<%@user.parties.each do |party| %>
+			<% end %>
+	</section>

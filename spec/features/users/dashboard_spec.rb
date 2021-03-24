@@ -27,7 +27,7 @@ RSpec.describe 'Authenticated User' do
 
     it 'has a friends section' do
       within(".friends-section") do
-        expect(page).to have_content("Placeholder!")
+        expect(page).to have_content("Friends")
       end
     end
 
@@ -38,7 +38,7 @@ RSpec.describe 'Authenticated User' do
       end
     end
   end
-  
+
   describe "friends section" do
     it 'has search field and button to add friend' do
       within (".friends-section") do
