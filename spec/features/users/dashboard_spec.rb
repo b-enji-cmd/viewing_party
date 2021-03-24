@@ -31,13 +31,10 @@ RSpec.describe 'Authenticated User' do
       end
     end
 
-
     it 'has a viewing party section' do
       within(".viewing-parties") do
         expect(page).to have_content("Placeholder!")
       end
     end
-
-
     end
   end
