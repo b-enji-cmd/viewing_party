@@ -37,7 +37,14 @@ RSpec.describe 'Authenticated User' do
         expect(page).to have_content("Placeholder!")
       end
     end
-
-
+  end
+  
+  describe "friends section" do
+    it 'has search field and button to add friend' do
+      within (".friends-section") do
+        expect(page).to have_field(:email, placeholder: 'Search by email')
+        expect(page).to have_button("Add Friend")
+      end
     end
   end
+end
