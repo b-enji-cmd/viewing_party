@@ -18,13 +18,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'travis'
 gem 'mimemagic', '~> 0.3.6'
 gem 'bcrypt'
-
+gem 'hirb', '~> 0.7.3'
 
 group :development, :test do
   gem 'pry'
   gem 'orderly'
   gem 'active_designer'
   gem 'rubocop-rails'
+  gem 'rspec-pride'
 end
 
 group :development do
