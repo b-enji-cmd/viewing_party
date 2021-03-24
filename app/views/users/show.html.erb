@@ -10,7 +10,9 @@
 		<% end %>
 		<% if !current_user.friends.empty? %>
 			<%current_user.friends.each do |friend| %>
-				<%= User.find_by(id: friend.friend_id).email %>
+				<ul class="friends-list">
+					<li><%= friend.email %></li>
+				</ul>		
 			<% end %>
 		<% else %>
 			<p>You currently have no friends.</p>
