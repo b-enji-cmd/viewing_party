@@ -1,9 +1,9 @@
 <%= form_with model: @user, local: true do |f| %>
   <%= f.label :email, 'Email:' %>
-  <%= f.email_field :email, :value => @user.email %><br>
-  <%= f.label :password, 'Password' %>
+  <%= f.email_field :email %><br>
+  <%= f.label :password, 'Password:' %>
   <%= f.password_field :password %><br>
-  <%= f.label :password_confirmation, 'Password Confirmation' if new_user %>
+  <%= f.label :password_confirmation, 'Password Confirmation:' if new_user %>
   <%= f.password_field :password_confirmation if new_user %><br>
   <%= f.submit button_text %>
 <% end %>
