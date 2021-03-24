@@ -3,6 +3,8 @@ rbenv:
 - 2.5.3
 addons:
   postgresql: 9.6
+before_install:
+  - gem install -v 2.2.8 bundler --no-rdoc --no-ri
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
