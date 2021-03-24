@@ -274,6 +274,7 @@ GEM
 
 PLATFORMS
   ruby
+  86_64-darwin-19
 
 DEPENDENCIES
   active_designer
