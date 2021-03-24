@@ -72,7 +72,7 @@ RSpec.describe 'User Registration' do
     expect(page).to have_content("Email has already been taken")
 	end
 
-  xit 'validates that passwords match' do
+  it 'validates that passwords match' do
     visit registration_path
 
     fill_in "user[email]", with: "coffeez@email.com"
@@ -81,8 +81,7 @@ RSpec.describe 'User Registration' do
 
     click_on "Register"
 
-    expect(page).to have_content("Password confirmation failed, passwords must match. Please try again.
-")
+    expect(page).to have_content("Password confirmation doesn't match Password")
   end
 
   it 'validates password minimum length' do
