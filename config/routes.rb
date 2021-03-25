@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/discover', to: 'users#index'
 
   get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
 
   resources :users, only: [:create]
 
