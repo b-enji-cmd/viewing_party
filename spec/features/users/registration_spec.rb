@@ -32,8 +32,67 @@ RSpec.describe 'User Registration' do
     click_on "Register"
 
     expect(current_path).to eq(users_path)
-    
+
     expect(page).to have_content("Email can't be blank")
     expect(page).to have_content("Password can't be blank")
+  end
+
+  it 'validates the email format' do
+    visit registration_path
+
+    fill_in "user[email]", with: "iloveMovies.com"
+    fill_in "user[password]", with: "password"
+    fill_in "user[password_confirmation]", with: "password"
+
+    click_on "Register"
+
+    expect(page).to have_content("Email is invalid")
+	end
+
+	it 'confirms email uniqueness' do
+    visit registration_path
+
+    email = "name@email.com"
+    password = "helloworld"
+
+    fill_in "user[email]", with: email
+    fill_in "user[password]", with: password
+    fill_in "user[password_confirmation]", with: password
+
+    click_on "Register"
+
+    visit registration_path
+
+    fill_in "user[email]", with: email
+    fill_in "user[password]", with: "password"
+    fill_in "user[password_confirmation]", with: "password"
+
+    click_on "Register"
+
+    expect(page).to have_content("Email has already been taken")
+	end
+
+  it 'validates that passwords match' do
+    visit registration_path
+
+    fill_in "user[email]", with: "coffeez@email.com"
+    fill_in "user[password]", with: "hellomovies"
+    fill_in "user[password_confirmation]", with: "filmnerd03"
+
+    click_on "Register"
+
+    expect(page).to have_content("Password confirmation doesn't match Password")
+  end
+
+  it 'validates password minimum length' do
+    visit registration_path
+
+    fill_in "user[email]", with: "magickalmugs@email.com"
+    fill_in "user[password]", with: "films"
+    fill_in "user[password_confirmation]", with: "films"
+
+    click_on "Register"
+
+    expect(page).to have_content("Password is too short (minimum is 8 characters)")
   end
 end

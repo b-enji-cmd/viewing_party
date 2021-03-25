@@ -3,11 +3,17 @@ rbenv:
 - 2.5.3
 addons:
   postgresql: 9.6
+before_install:
+- gem install bundler:2.1.4
+- bundle update mimemagic
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
 deploy:
   provider: heroku
   api_key:
-  app:
+    secure: DuZY59V+MwXM/Lg5odslkXhIQzL/NU7U8A1PJeLPzPsGfh7/bZtvia47tIsjwuZo+U+5kRmU1Ww0OTGMSLOhLCaL8taOu65Np47aGS3jZ5D2SFyn1lnl3bzkJhWMeZzUQuMJ2TMKraENIbHUJ/ul4CMrPKSU7DLNZYjWEc2naGtL9yu1I9ClveNDyDSu7ZprexyjRYj9sG2xqtN4fzFgUydhpocpdc/3YqA60ID1A96zRmh9RrDwvVIK258BlIcO55CXy/TkzpQCzIQ1tbcSd59F6hu9zDTBPe0xPTv5AXtl0KyIEgrT/kc09IkdIfr8muA/sQAmHPyLvNu5E/k/25aBHH+00f/15IDv4DbEmhyc4T4pxfgy9kEQWuCjDj6I6VCidOp7Z4siIBsLNoc2jbyajm9/ZL4bJKlvN+tYYmxlk7cBWok4VDVN2AKP61T5LnicyPBOAhoLPvoO1OkQyqVFkxZRejtVJbjqRlXQfAzb7mijU26nqbRYMbC86g/pb0bHYPh9zIIZaYOgaFREkbLhAdJQFUVeHH3exFXaG1Mn+8mNBYORza5tx8+NXRGJCf+K3zjG76C6c7HfL2iV9nswZOwA2T/9R+ei7AQjeHCKtJFFhUDsVSBd3zHUdsHvOn8XUsM7UedwzvmfkVhZMk53hM3SKej0N4Bc8cfZ2pw=
+  on:
+    branch: main
+  app: desolate-journey-50207
   run: rails db:migrate
