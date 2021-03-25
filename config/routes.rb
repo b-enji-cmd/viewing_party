@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
 
+  get '/movies', to: 'movies#index'
+  get '/movies/:id', to: 'movies#show'
+
   resources :users, only: [:create]
 
 end
