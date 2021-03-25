@@ -63,5 +63,16 @@ RSpec.describe 'Authenticated User' do
         expect(page).to_not have_content("You currently have no friends.")
       end
     end
+
+    it 'when I add an email that is not in the database, I see a flash message' do
+      non_existing_friend = "example@email.com"
+
+      within(".friends-section") do
+        fill_in 'email', with: non_existing_friend
+        click_button "Add Friend"
+      end
+      save_and_open_page
+      expect(page).to have_content("That user does not exist")
+    end
   end
 end
