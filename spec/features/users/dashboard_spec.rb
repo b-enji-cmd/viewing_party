@@ -49,9 +49,9 @@ RSpec.describe 'Authenticated User' do
     end
 
     it 'when I add an email that is in the database, it gets added to the friends list' do
-      new_friend = User.create!(email: "another@email.com", password: "superssecret")
+      new_friend = User.create!(email: "new@email.com", password: "superssecret")
       UserFriend.create!(user_id: @user.id, friend_id: new_friend.id)
-      # require "pry";binding.pry
+
       within(".friends-section") do
         expect(page).to_not have_content(new_friend.email)
 
@@ -71,8 +71,24 @@ RSpec.describe 'Authenticated User' do
         fill_in 'email', with: non_existing_friend
         click_button "Add Friend"
       end
-      save_and_open_page
+
       expect(page).to have_content("That user does not exist")
+    end
+
+    it 'search in not case sensitive' do
+      another_friend = User.create!(email: "another@email.com", password: "superssecret")
+      UserFriend.create!(user_id: @user.id, friend_id: another_friend.id)
+
+      within(".friends-section") do
+        expect(page).to_not have_content(another_friend.email)
+
+        fill_in 'email', with: "AnOtHeR@email.com"
+
+        click_button "Add Friend"
+        save_and_open_page
+        expect(page).to have_content(another_friend.email)
+        expect(page).to_not have_content("You currently have no friends.")
+      end
     end
   end
 end

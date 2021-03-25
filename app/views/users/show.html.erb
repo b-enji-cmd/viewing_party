@@ -3,11 +3,12 @@
 <%= button_to "Discover Movies", discover_path, method: :get %>
 
 	<section class="friends-section">
-		<p>Friends</p>
+		<h3>Friends</h3><hr>
 		<%= form_with url: user_friends_path, local: true do |f| %>
 			<%= f.email_field :email, placeholder: 'Search by email' %>
 			<%= f.submit 'Add Friend' %>
 		<% end %>
+		<p>My Friends</p>
 		<% if !current_user.friends.empty? %>
 			<%current_user.friends_email.each do |email| %>
 				<ul class="friends-list">
