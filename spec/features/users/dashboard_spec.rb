@@ -53,23 +53,20 @@ RSpec.describe 'Authenticated User' do
       end
     end
 
-    it 'when I add an email that is in the database, it gets added to the friends list' do
+    xit 'when I add an email that is in the database, it gets added to the friends list' do
+      User.destroy_all
+      user1 = User.create!(email: "another2@email.com", password: "secretstuff")
       new_friend = User.create!(email: "another@email.com", password: "superssecret")
-
-      within(".friends-list") do
-        expect(page).to_not have_content(new_friend.email)
-      end
+      user1.friends << new_friend
 
       within(".friends-section") do
+        expect(page).to_not have_content(new_friend.email)
+
         fill_in 'email', with: new_friend.email
+
         click_button "Add Friend"
-      end
 
-      within(".friends-list") do
-        expect(page).to_not have_content(new_friend.email)
-      end
-
-      within(".friends-section") do
+        expect(page).to have_content(new_friend.email)
         expect(page).to_not have_content("You currently have no friends.")
       end
     end
