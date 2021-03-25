@@ -25,3 +25,6 @@
 /coverage/*
 
 active_designer
+
+# Ignore application configuration
+/config/application.yml

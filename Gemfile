@@ -19,6 +19,8 @@ gem 'travis'
 gem 'mimemagic', '~> 0.3.6'
 gem 'bcrypt'
 gem 'hirb', '~> 0.7.3'
+gem 'faraday'
+gem 'figaro'
 
 group :development, :test do
   gem 'pry'
