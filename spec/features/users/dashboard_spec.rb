@@ -2,23 +2,19 @@ require 'rails_helper'
 
 RSpec.describe 'Authenticated User' do
   before :each do
+    @user = User.create!(email: "ben@example.com", password: "verysecure")
     visit root_path
 
-    click_link("New to Viewing Party? Register Here")
+    click_button "Sign In"
+    fill_in :email, with: @user.email
+    fill_in :password, with: 'verysecure'
 
-    @email = "example@email.com"
-    @password = "turingschool"
-
-    fill_in 'user[email]', with: @email
-    fill_in "user[password]", with: @password
-    fill_in "user[password_confirmation]", with: @password
-
-    click_on "Register"
+    click_on "Sign In"
   end
 
   describe "dashboard page" do
     it "displays a welcome message" do
-      expect(page).to have_content "Welcome #{@email}!"
+      expect(page).to have_content "Welcome #{@user.email}!"
     end
 
     it 'and a button to discover movies' do
@@ -52,12 +48,10 @@ RSpec.describe 'Authenticated User' do
       end
     end
 
-    xit 'when I add an email that is in the database, it gets added to the friends list' do
-      User.destroy_all
-      user1 = User.create!(email: "another2@email.com", password: "secretstuff")
+    it 'when I add an email that is in the database, it gets added to the friends list' do
       new_friend = User.create!(email: "another@email.com", password: "superssecret")
-      user1.friends << new_friend
-
+      UserFriend.create!(user_id: @user.id, friend_id: new_friend.id)
+      # require "pry";binding.pry
       within(".friends-section") do
         expect(page).to_not have_content(new_friend.email)
 

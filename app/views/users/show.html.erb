@@ -9,9 +9,9 @@
 			<%= f.submit 'Add Friend' %>
 		<% end %>
 		<% if !current_user.friends.empty? %>
-			<%current_user.friends.each do |friend| %>
+			<%current_user.friends_email.each do |email| %>
 				<ul class="friends-list">
-					<li><%= friend.email %></li>
+					<li><%= email %></li>
 				</ul>
 			<% end %>
 		<% else %>
