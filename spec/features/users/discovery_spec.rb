@@ -22,15 +22,19 @@ RSpec.describe 'Authenticated User' do
     end
 
     it "should have a text field to search by movie title" do
-
+      within("#movie-search") do
+        expect(page).to have_content "Search for:"
+      end
     end
 
     it "should have a button to search by movie title" do
-
+      within("#movie-search") do
+        expect(page).to have_button "Search"
+      end
     end
 
     it "should take me to the movies page after clicking either" do
-
+      #TODO
     end
   end
 end
