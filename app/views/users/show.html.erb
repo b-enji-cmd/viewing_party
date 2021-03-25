@@ -8,16 +8,16 @@
 			<%= f.email_field :email, placeholder: 'Search by email' %>
 			<%= f.submit 'Add Friend' %>
 		<% end %>
-		<p>My Friends</p>
-		<% if !current_user.friends.empty? %>
-			<%current_user.friends_email.each do |email| %>
-				<ul class="friends-list">
-					<li><%= email %></li>
-				</ul>
-			<% end %>
-		<% else %>
-			<p>You currently have no friends.</p>
-		<% end %>
+			<p>My Friends</p>
+				<% if !current_user.friends.empty? %>
+					<%current_user.friends_email.each do |email| %>
+						<ul class="friends-list">
+							<li><%= email %></li>
+						</ul>
+					<% end %>
+				<% else %>
+					<p>You currently have no friends.</p>
+				<% end %>
 	</section>
 
 	<section class="viewing-parties">

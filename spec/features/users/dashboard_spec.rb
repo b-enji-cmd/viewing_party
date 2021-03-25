@@ -85,7 +85,7 @@ RSpec.describe 'Authenticated User' do
         fill_in 'email', with: "AnOtHeR@email.com"
 
         click_button "Add Friend"
-        save_and_open_page
+        
         expect(page).to have_content(another_friend.email)
         expect(page).to_not have_content("You currently have no friends.")
       end
