@@ -19,5 +19,29 @@ RSpec.describe 'Existing User' do
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content "Welcome #{@user.email}!"
     end
+
+    it "should prompt when providing incorrect info" do
+      fill_in :email, with: "bruh"
+      fill_in :password, with: 'bruh'
+
+      click_button "Sign In"
+      expect(page).to have_content "email or password is incorrect"
+    end
+
+    it "should prompt when no user exists" do
+      fill_in :email, with: "nothere@email.org"
+      fill_in :password, with: 'idontexist'
+
+      click_button "Sign In"
+      expect(page).to have_content "email or password is incorrect"
+    end
+
+    it "should prompt when incorrect email format" do
+      fill_in :email, with: "thisisabademail"
+      fill_in :password, with: 'butthisisavalidpassword'
+
+      click_button "Sign In"
+      expect(page).to have_content "email or password is incorrect"
+    end
   end
 end
