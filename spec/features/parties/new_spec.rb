@@ -44,7 +44,7 @@ RSpec.describe 'As Authenticated User' do
     it 'Checkboxes next to each friend (if user has friends)' do
     end
 
-    it 'and if user has no friends a button to add friends' do 
+    it 'and if user has no friends a button to add friends' do
     end
 
     it 'Button to create a party' do
@@ -54,6 +54,11 @@ RSpec.describe 'As Authenticated User' do
     end
 
     it 'and when I click create button, I am redirected back to my dashboard where I see the newly created event' do
+
+      click_button("Create Party")
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content("placeholder for @movie.title")
     end
 
     it 'and  my event should be seen by any friends that were invited once they long in' do
