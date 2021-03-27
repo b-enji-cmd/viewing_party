@@ -2,18 +2,5 @@
 
 <section class="new-party-form">
   <%= "Movie Title Placeholder" %>
-
-  <%= form_with model: @party, method: :create, local: true do |f| %>
-    <%= f.label :duration, 'Duration of Party' %>
-    <%= f.number_field :duration, value: 15 %>
-
-    <%= f.label :date, 'Date' %>
-    <%= f.date_field :date %>
-
-    <%= f.label :start_time, 'Start Time' %>
-    <%= f.time_field :start_time %>
-
-    <%= f.submit 'Create Party'  %>
-  <% end %>
-
+  <%= render partial: 'shared/party', locals: {button_text: 'Create Party' } %>
 </section>

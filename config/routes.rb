@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   get '/movies/:id', to: 'movies#show'
 
   resources :users, only: [:create]
-  resources :parties, only: [:new]
+  resources :parties, only: [:new, :create]
   resources :user_friends
 end
