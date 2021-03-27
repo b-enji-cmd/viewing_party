@@ -1,10 +1,10 @@
 class MoviesController < ApplicationController
   def index
-    if params[:top_rated]
-      @returned_movies = MovieService.top_movies
-    elsif params[:q]
-      @returned_movies = MovieService.search_movie(params[:q])
-    end
+    @returned_movies = if params[:q] == 'top_rated'
+                         MovieService.top_movies
+                       else
+                         MovieService.search_movie(params[:q])
+                       end
   end
 
   def show

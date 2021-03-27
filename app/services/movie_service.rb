@@ -2,6 +2,7 @@ class MovieService < ApiService
   def self.top_movies
     endpoint = "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV["movies_secret"]}&language=en-US&page=1"
     create_data(endpoint)
+
     parsed_top_rated = get_data(endpoint)
     parsed_top_rated[:results].map do |movie|
       Moovee.new(movie)
