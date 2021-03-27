@@ -15,7 +15,9 @@ RSpec.describe 'Authenticated User' do
 
   describe "movie index page" do
     it "should display top rated movies" do
+      Movie.destroy_all
       click_button "Find Top Rated Movies"
+
     end
 
     it "should display searched movies" do
