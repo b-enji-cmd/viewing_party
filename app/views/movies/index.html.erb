@@ -8,7 +8,6 @@
 </section>
 
 <section id="returned-movies">
-	<%binding.pry %>
 	<% @returned_movies.each do |movie| %>
 		<p><%= link_to "#{movie.title}", "/movies/#{movie.api_id}", params: {db_id: movie.api_id} %> Vote Average: <%= movie.vote_average %></p> <br>
 	<% end %>
