@@ -7,7 +7,9 @@
 	<% end %>
 </section>
 
-<section id="top-movies">
-
+<section id="returned-movies">
+	<% @returned_movies.each do |movie| %>
+		<p><%= link_to "#{movie.title}", "/movies/#{movie.api_id}", params: {db_id: movie.api_id} %> Vote Average: <%= movie.vote_average %></p> <br>
+	<% end %>
 </section>
 
