@@ -14,13 +14,12 @@ RSpec.describe 'Authenticated User' do
   end
 
   describe "movie index page" do
-    it "should display top rated movies" do
+    xit "should display top rated movies" do
       Movie.destroy_all
       click_button "Find Top Rated Movies"
-
     end
 
-    it "should display searched movies" do
+    xit "should display searched movies" do
       within("#movie-search") do
         fill_in :q , with: "Phoenix"
         click_button "Search"

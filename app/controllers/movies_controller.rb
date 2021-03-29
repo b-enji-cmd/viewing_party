@@ -8,7 +8,6 @@ class MoviesController < ApplicationController
   end
 
   def show
-    binding.pry
     #@movie = MovieService.find_movie(params[:db_id])
   end
 
