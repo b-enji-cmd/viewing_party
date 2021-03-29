@@ -33,7 +33,7 @@ RSpec.describe 'Authenticated User' do
       end
     end
 
-    it "should take me to the movies page after clicking either" do
+    xit "should take me to the movies page after clicking either" do
       click_button "Find Top Rated Movies"
       expect(current_path).to eq(movies_path)
 
