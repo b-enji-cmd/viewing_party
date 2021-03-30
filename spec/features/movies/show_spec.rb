@@ -12,7 +12,6 @@ RSpec.describe 'Authenticated User' do
       VCR.use_cassette('dark_phoenix_detail_page', :serialize_with => :json) do
         visit('/movies/320288')
         body = File.read('spec/fixtures/vcr_cassettes/dark_phoenix_detail_page.json')
-        # response_body_for(:get, "http://localhost:3000/movies/3202888")
         json_response = JSON.parse(body, symbolize_names: true)
         test = JSON.parse(json_response[:http_interactions][0][:response][:body][:string], symbolize_names: true )
 
