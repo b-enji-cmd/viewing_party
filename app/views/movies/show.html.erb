@@ -1,2 +1,4 @@
 <h1>Show page!</h1>
-<% binding.pry %>
+<% @cast.each do |member| %>
+	<p> <%= member.name %> as <%= member.character %></p>
+<% end %>
