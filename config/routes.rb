@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   resources :user_friends
 
+  get '/viewing_parties/new', to: 'viewing_parties#new'
 end
