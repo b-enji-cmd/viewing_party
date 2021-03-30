@@ -44,7 +44,23 @@ class MovieService < ApiService
     end.first(10)
   end
 
-  # MOVING THIS METHOD TO THE ACTION WHICH IS THE RESULT OF CREATING A VIEWING PARTY
+  def self.reviews(id)
+    page = 1
+    reviews = []
+    reviews_endpoint = "https://api.themoviedb.org/3/movie/#{id}/reviews?api_key=#{ENV["movies_secret"]}&page=#{page}"
+    parsed_reviews = get_data(reviews_endpoint)
+    binding.pry
+    until reviews.length == parsed_reviews[:total_results]
+      parsed_reviews[:results].each do |review|
+        reviews << Review.new(review)
+      end
+      page += 1
+    end
+    reviews
+  end
+
+
+  #MOVING THIS METHOD TO THE ACTION WHICH IS THE RESULT OF CREATING A VIEWING PARTY
   # def self.create_data(endpoint)
   #   parsed_top_rated = get_data(endpoint)
   #
