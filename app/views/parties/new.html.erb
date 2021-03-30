@@ -1,6 +1,6 @@
 <h1>Your Viewing Party Details</h1>
 
 <section class="new-party-form">
-  <%= "Movie Title Placeholder" %>
+  <p>Movie Title: <%= @movie.title %></p>
   <%= render partial: 'shared/party', locals: {button_text: 'Create Party' } %>
 </section>
