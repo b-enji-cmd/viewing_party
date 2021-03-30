@@ -1,3 +1,5 @@
-<h1>Show page!</h1>
+<h1><%= @movie.title %></h1>
 
-<%= link_to "Create Viewing Party for Movie", viewing_parties_new_path %>
+<%= link_to "Create Viewing Party for Movie", viewing_parties_new_path %><br>
+
+<p>@movie.vote_average</p>

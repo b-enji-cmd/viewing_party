@@ -21,8 +21,8 @@ RSpec.describe 'Authenticated User' do
         @movie = Moovee.new(test)
         expect(page).to have_content(@movie.title)
         expect(page).to have_content(@movie.vote_average)
-        # expect(page).to have_content(movie_title.runtime)
-        # expect(page).to have_content(movie_title.genre)
+        expect(page).to have_content(@movie.runtime)
+        # expect(page).to have_content(@movie.genre)
         # expect(page).to have_content(movie_title.summary)
 
 

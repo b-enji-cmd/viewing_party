@@ -11,7 +11,6 @@ class Moovee
     @api_id = data[:id]
     @summary = data[:overview]
     @vote_average = data[:vote_average]
-    @overview = data[:overview]
     @runtime = data[:runtime]
   end
 
