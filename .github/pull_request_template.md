@@ -1,7 +1,7 @@
 # Modifies
--`file path`: summary
+- `file path`: summary
 # Adds
--`file path`: summary
+- `file path`: summary
 
 <details>
 <summary>Issues</summary>
