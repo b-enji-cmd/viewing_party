@@ -6,9 +6,9 @@ class MovieService < ApiService
 
     parsed_page_one = get_data(page_one)
     parsed_page_two = get_data(page_two)
-    parsed_top_rated = parsed_page_one + parsed_page_two
+    parsed_top_rated = parsed_page_one[:results] + parsed_page_two[:results]
 
-    parsed_top_rated[:results].map do |movie|
+    parsed_top_rated.map do |movie|
       Moovee.new(movie)
     end
   end
@@ -35,6 +35,15 @@ class MovieService < ApiService
     find_endpoint = "https://api.themoviedb.org/3/movie/#{id}?api_key=#{ENV["movies_secret"]}&language=en-US"
     movie_return = get_data(find_endpoint)
     Moovee.new(movie_return)
+  end
+
+  def self.cast(id)
+    cast_endpoint = "https://api.themoviedb.org/3/movie/#{id}/credits?api_key=#{ENV["movies_secret"]}&language=en-US"
+    parsed_cast = get_data(cast_endpoint)
+
+    parsed_cast[:cast].map do |cast_member|
+      Cast.new(cast_member)
+    end.first(10)
   end
 
 
