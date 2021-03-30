@@ -28,9 +28,9 @@ class MovieService < ApiService
   end
 
   def self.find_movie(id)
-    find_endpoint = "https://api.themoviedb.org/3/movie/#{id}?api_key=#{ENV["movies_secret"]}2&language=en-US"
+    find_endpoint = "https://api.themoviedb.org/3/movie/#{id}?api_key=#{ENV["movies_secret"]}&language=en-US"
     movie_return = get_data(find_endpoint)
-    binding.pry
+    Moovee.new(movie_return)
   end
 
 
