@@ -1,3 +1,22 @@
-<h1>Show page!</h1>
+<h1><%= @movie.title %></h1>
 
-<%= button_to "Create a Viewing Party", new_party_path, params: { duration: @movie.runtime, api_id: @movie.api_id, title: @movie.title }, method: :get %>
+<%= link_to "Create Viewing Party for Movie", viewing_parties_new_path %><br>
+
+<section id="movie-details">
+  <p>Vote Average: <%= @movie.vote_average %></p>
+  <p>Runtime: <%= @movie.runtime %></p>
+  <p>Genre(s): </p>
+    <ul>
+      <% if @movie.genres.nil? %>
+        <p>No genres listed.</p>
+      <% else %>
+        <% @movie.genres.each do |genre| %>
+          <li><%= genre %></li>
+        <% end %>
+      <% end %>
+    </ul>
+</section><hr>
+
+<section id="movie-summary">
+  <p>Summary:<br><br> <%= @movie.summary %></p>
+</section><hr>

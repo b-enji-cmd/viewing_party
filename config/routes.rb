@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   resources :parties, only: [:new, :create]
   resources :user_friends
+  # from Arika's PR:
+  # get '/viewing_parties/new', to: 'viewing_parties#new'
+  ##
 end
