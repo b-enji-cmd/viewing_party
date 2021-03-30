@@ -4,22 +4,13 @@ RSpec.describe 'As Authenticated User' do
   describe 'When I visit the new viewing party page' do
     before :each do
       @user = User.create!(email: "winner@email.fr", password: "hellomovies2021")
-
-      visit root_path
-
-      click_button "Sign In"
-      fill_in :email, with: @user.email
-      fill_in :password, with: 'hellomovies2021'
-      click_button "Sign In"
+      visit dashboard_path
       click_button "Discover Movies"
-      fill_in :q, with: 'about you'
-      click_button "Search"
-      click_link "10 Things I Hate About You"
-      click_button "Create a Viewing Party"
     end
+
     it 'I see the the name of the movie title rendered above a form' do
       visit new_party_path
-
+save_and_open_page
       expect(page).to have_content("Your Viewing Party Details")
 
       within(".new-party-form") do

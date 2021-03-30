@@ -1,9 +1,7 @@
 class PartiesController < ApplicationController
   def new
-    binding.pry
-    @movie =
-    
-    binding.pry
+    # @movie =
+
     @party = Party.new
   end
 

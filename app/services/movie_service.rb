@@ -6,11 +6,11 @@ class MovieService < ApiService
 
     parsed_page_one = get_data(page_one)
     parsed_page_two = get_data(page_two)
-    parsed_top_rated = parsed_page_one + parsed_page_two
+    parsed_top_rated = parsed_page_one[:results] + parsed_page_two[:results]
 
-    parsed_top_rated[:results].map do |movie|
-      Moovee.new(movie)
-    end
+     parsed_top_rated.map do |movie|
+       Moovee.new(movie)
+     end
   end
 
   def self.search_movie(title)
