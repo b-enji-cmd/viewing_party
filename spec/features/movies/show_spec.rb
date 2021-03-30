@@ -17,10 +17,16 @@ RSpec.describe 'Authenticated User' do
 
   describe "movie show page" do
     it "have button to create viewing party" do
-      VCR.use_cassette('dark_phoenix_detial_page') do
-        visit movies_path({id: 320288})
+      visit discover_path
 
-        expect(current_path).to eq(movies_path)
+      VCR.use_cassette('dark_phoenix_detail_page') do
+        fill_in :q, with: 'Phoenix'
+        click_on 'Search'
+
+        movie_title = find('.title', match: :first).text
+        click_on(movie_title)
+
+        expect(current_path).to eq(movies_path(movie_title.api_id))
 
         expect(page).to have_link('Create Viewing Part for Movie')
       end

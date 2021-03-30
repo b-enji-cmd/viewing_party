@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    #@movie = MovieService.find_movie(params[:db_id])
+    @movie = MovieService.find_movie(params[:id])
   end
 
 end
