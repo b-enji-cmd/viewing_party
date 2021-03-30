@@ -28,7 +28,7 @@ RSpec.describe 'Authenticated User' do
 
         # expect(current_path).to eq(movies_path(movie_title.api_id))
 
-        expect(page).to have_link('Create Viewing Part for Movie')
+        expect(page).to have_link('Create Viewing Party for Movie')
       end
     end
   end
