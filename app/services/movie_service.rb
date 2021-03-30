@@ -51,7 +51,6 @@ class MovieService < ApiService
     reviews = []
     reviews_endpoint = "https://api.themoviedb.org/3/movie/#{id}/reviews?api_key=#{ENV["movies_secret"]}&page=#{page}"
     parsed_reviews = get_data(reviews_endpoint)
-    binding.pry
     until reviews.length == parsed_reviews[:total_results]
       parsed_reviews[:results].each do |review|
         reviews << Review.new(review)
