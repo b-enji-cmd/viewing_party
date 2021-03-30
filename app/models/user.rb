@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  has_many :user_parties
+  has_many :user_parties, dependent: :destroy
   has_many :parties, through: :user_parties
-  has_many :friends, class_name: 'UserFriend'
+  has_many :user_friends, dependent: :destroy
+  has_many :friends, class_name: 'UserFriend', dependent: :destroy
 
   validates :email, uniqueness: true, presence: true, format: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :password, length: { minimum: 8 }, presence: true
