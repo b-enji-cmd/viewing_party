@@ -26,12 +26,12 @@ RSpec.describe 'Authenticated User' do
           expect(page).to have_content(@movie.runtime)
           @movie.genres.each do |genre|
             expect(page).to have_content(genre)
-          end 
+          end
         end
 
-        # within("#movie-summary") do
-        #   expect(page).to have_content(@movie.summary)
-        # end
+        within("#movie-summary") do
+          expect(page).to have_content(@movie.summary)
+        end
 
       end
     end
