@@ -2,4 +2,8 @@
 
 <%= link_to "Create Viewing Party for Movie", viewing_parties_new_path %><br>
 
-<p>@movie.vote_average</p>
+<section id="movie-details">
+  <p><%= @movie.vote_average %></p>
+  <p><%= @movie.runtime %></p>
+  <p><%= @movie.genre %></p>
+</section>

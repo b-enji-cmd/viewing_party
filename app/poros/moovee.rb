@@ -4,7 +4,8 @@ class Moovee
               :summary,
               :vote_average,
               :overview,
-              :runtime
+              :runtime,
+              :genre
 
   def initialize(data)
     @title = data[:title]
@@ -12,6 +13,7 @@ class Moovee
     @summary = data[:overview]
     @vote_average = data[:vote_average]
     @runtime = data[:runtime]
+    @genre = data[:genre]
   end
 
   # def db_movie(title)
