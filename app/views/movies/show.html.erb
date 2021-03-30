@@ -3,7 +3,16 @@
 <%= link_to "Create Viewing Party for Movie", viewing_parties_new_path %><br>
 
 <section id="movie-details">
-  <p><%= @movie.vote_average %></p>
-  <p><%= @movie.runtime %></p>
-  <p><%= @movie.genre %></p>
+  <p>Vote Average: <%= @movie.vote_average %></p>
+  <p>Runtime: <%= @movie.runtime %></p>
+  <p>Genre(s): </p>
+    <ul>
+      <% if @movie.genres.nil? %>
+        <p>No genres listed.</p>
+      <% else %>
+        <% @movie.genres.each do |genre| %>
+          <li><%= genre %></li>
+        <% end %>
+      <% end %>
+    </ul>
 </section>

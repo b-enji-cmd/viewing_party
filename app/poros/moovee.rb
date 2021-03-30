@@ -5,7 +5,7 @@ class Moovee
               :vote_average,
               :overview,
               :runtime,
-              :genre
+              :genres
 
   def initialize(data)
     @title = data[:title]
@@ -13,10 +13,16 @@ class Moovee
     @summary = data[:overview]
     @vote_average = data[:vote_average]
     @runtime = data[:runtime]
-    @genre = data[:genre]
+    @genres = data[:genres]
   end
 
   # def db_movie(title)
   #   Movie.find_by title: title
   # end
+  def genres
+    @genres.map do |genre_hash|
+      genre_hash[:name]
+    end 
+  end
+
 end
