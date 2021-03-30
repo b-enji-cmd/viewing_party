@@ -37,6 +37,15 @@ class MovieService < ApiService
     Moovee.new(movie_return)
   end
 
+  def self.cast(id)
+    cast_endpoint = "https://api.themoviedb.org/3/movie/#{id}/credits?api_key=#{ENV["movies_secret"]}&language=en-US"
+    parsed_cast = get_data(cast_endpoint)
+
+    parsed_cast[:cast].map do |cast_member|
+      Cast.new(cast_member)
+    end.first(10)
+  end
+
 
   #MOVING THIS METHOD TO THE ACTION WHICH IS THE RESULT OF CREATING A VIEWING PARTY
   # def self.create_data(endpoint)

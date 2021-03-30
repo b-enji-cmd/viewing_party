@@ -1,3 +1,4 @@
+
 <h1><%= @movie.title %></h1>
 
 <%= link_to "Create Viewing Party for Movie", viewing_parties_new_path %><br>
@@ -20,3 +21,8 @@
 <section id="movie-summary">
   <p>Summary:<br><br> <%= @movie.summary %></p>
 </section><hr>
+
+<% @cast.each do |member| %>
+	<p> <%= member.name %> as <%= member.character %></p>
+<% end %>
+
