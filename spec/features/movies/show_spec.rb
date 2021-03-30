@@ -32,5 +32,20 @@ RSpec.describe 'Authenticated User' do
         end
       end
     end
+
+    it 'Shows movies recommendations' do
+      VCR.use_cassette('dark_phoenix_detail_page', serialize_with: :json) do
+        visit('/movies/320288')
+        body = File.read('spec/fixtures/vcr_cassettes/dark_phoenix_detail_page.json')
+        json_response = JSON.parse(body, symbolize_names: true)
+        test = JSON.parse(json_response[:http_interactions][0][:response][:body][:string], symbolize_names: true)
+
+        within('#recommendations') do
+          @movie.recommendations.each do |recommendation|
+            expect(page).to have_content(recommendation)
+          end
+        end
+      end 
+    end
   end
 end
