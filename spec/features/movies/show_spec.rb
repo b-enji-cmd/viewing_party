@@ -24,10 +24,14 @@ RSpec.describe 'Authenticated User' do
         within("#movie-details") do
           expect(page).to have_content(@movie.vote_average)
           expect(page).to have_content(@movie.runtime)
-          expect(page).to have_content(@movie.genre)
+          @movie.genres.each do |genre|
+            expect(page).to have_content(genre)
+          end 
         end
-        # expect(page).to have_content(movie_title.summary)
 
+        # within("#movie-summary") do
+        #   expect(page).to have_content(@movie.summary)
+        # end
 
       end
     end
