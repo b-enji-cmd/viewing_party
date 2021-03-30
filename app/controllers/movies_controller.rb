@@ -5,6 +5,8 @@ class MoviesController < ApplicationController
                        else
                          MovieService.search_movie(params[:q])
                        end
+
+
   end
 
   def show

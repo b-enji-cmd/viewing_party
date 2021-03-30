@@ -1,30 +1,34 @@
 class MovieService < ApiService
   def self.top_movies
-    endpoint = "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV["movies_secret"]}&language=en-US&page=1"
-    #call an additional page if there are less than 40 movies
-    # each with object
-    # get_data inside enum
-    # endpoint = somestringpage=#{blockvariable with some integer}
-    # create MooVee PORO
-    # less than 40 movies?
-    # parse another endpoint page
+    page_one = "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV["movies_secret"]}&language=en-US&page=1"
+    page_two = "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV["movies_secret"]}&language=en-US&page=2"
 
-    parsed_top_rated = get_data(endpoint)
-    #This can be 2 pages,
+
+    parsed_page_one = get_data(page_one)
+    parsed_page_two = get_data(page_two)
+    parsed_top_rated = parsed_page_one + parsed_page_two
+
     parsed_top_rated[:results].map do |movie|
       Moovee.new(movie)
     end
   end
 
   def self.search_movie(title)
-    search_endpoint = "https://api.themoviedb.org/3/search/movie?api_key=#{ENV["movies_secret"]}&language=en-US&query=#{title}"
-    #create_data(search_endpoint)
+    page = 1
+    matching_movies = []
     #
-    #keep parsing api until the length of the return is 40 movies
-    parsed_search = get_data(search_endpoint)
-    parsed_search[:results].map do |movie|
-      Moovee.new(movie)
+
+    until matching_movies.length == 40
+      search_endpoint = "https://api.themoviedb.org/3/search/movie?api_key=#{ENV["movies_secret"]}&language=en-US&query=#{title}&page=#{page}"
+      parsed_search = get_data(search_endpoint)
+      break matching_movies if matching_movies.length == parsed_search[:total_results]
+
+      parsed_search[:results].each do |movie|
+        matching_movies << Moovee.new(movie)
+      end
+      page += 1
     end
+    matching_movies.first(40)
   end
 
   def self.find_movie(id)
