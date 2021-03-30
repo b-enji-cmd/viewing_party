@@ -1,8 +1,8 @@
 class Cast
-	attr_reader :name, :character
+  attr_reader :name, :character
 
-	def initialize(hash)
-		@name = hash[:name]
-		@character = hash[:character]
-	end
+  def initialize(hash)
+    @name = hash[:name]
+    @character = hash[:character]
+  end
 end

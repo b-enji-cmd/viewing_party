@@ -2,5 +2,5 @@ class UserParty < ApplicationRecord
   belongs_to :user
   belongs_to :party
 
-  enum status: %w(invited host)
+  enum status: { 'invited' => 0, 'host' => 1 }
 end
