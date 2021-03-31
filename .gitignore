@@ -28,3 +28,6 @@ active_designer
 
 # Ignore application configuration
 /config/application.yml
+
+spec/fixtures/.DS_Store
+

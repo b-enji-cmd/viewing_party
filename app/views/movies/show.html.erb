@@ -1,6 +1,6 @@
 <h1><%= @movie.title %></h1>
 
-<%= link_to "Create Viewing Party for Movie", viewing_parties_new_path, params: {title: @movie.title, api_id: @movie.api_id, duration: @movie.runtime}%><br>
+<%= link_to "Create Viewing Party for Movie", viewing_parties_new_path(:info => {title: @movie.title, api_id: @movie.api_id, duration: @movie.runtime})%><br>
 
 <section id="movie-details">
   <p>Vote Average: <%= @movie.vote_average %></p>
