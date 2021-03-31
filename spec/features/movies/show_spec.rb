@@ -49,6 +49,7 @@ RSpec.describe 'Authenticated User' do
     it "should display information about the reviews" do
       VCR.use_cassette('dark_phoenix_review_details') do
         visit('/movies/320288')
+        expect(page).to have_content "8 Reviews"
         within("#reviews") do
           within("#review-0") do
             expect(page).to have_content("SWITCH.")
