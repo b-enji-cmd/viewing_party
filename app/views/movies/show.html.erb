@@ -22,5 +22,15 @@
   <p>Summary:<br><br> <%= @movie.summary %></p>
 </section><hr>
 
-
-
+<section id="recommendations">
+  <p>Other movies you may enjoy:</p>
+  <ul>
+    <% if @movie.recommendations.nil? %>
+      <p>No recommendations found.</p>
+    <% else %>
+      <% @movie.recommendations.each do |recommendation| %>
+        <li><%= recommendation %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</section><hr>

@@ -11,5 +11,6 @@ class MoviesController < ApplicationController
     @movie = MovieService.find_movie(params[:id])
     # @reviews = MovieService.reviews(@movie.api_id)
     # @cast = MovieService.cast(@movie.api_id)
+    @recommendations = MovieService.recommendations(@movie.api_id)
   end
 end

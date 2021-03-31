@@ -45,7 +45,7 @@ RSpec.describe 'Authenticated User' do
             expect(page).to have_content(recommendation)
           end
         end
-      end 
+      end
     end
   end
 end
