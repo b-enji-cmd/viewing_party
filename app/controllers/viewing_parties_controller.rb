@@ -1,7 +1,5 @@
-class PartiesController < ApplicationController
+class ViewingPartiesController < ApplicationController
   def new
-    # @movie =
-
     @party = Party.new
   end
 

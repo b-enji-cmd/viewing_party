@@ -4,17 +4,26 @@ RSpec.describe 'As Authenticated User' do
   describe 'When I visit the new viewing party page' do
     before :each do
       @user = User.create!(email: "winner@email.fr", password: "hellomovies2021")
-      visit dashboard_path
-      click_button "Discover Movies"
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
 
     it 'I see the the name of the movie title rendered above a form' do
-      visit new_party_path
-save_and_open_page
-      expect(page).to have_content("Your Viewing Party Details")
+      VCR.use_cassette('dark_phoenix_detail_page') do
+        visit('/movies/320288')
 
-      within(".new-party-form") do
-        expect(page).to have_content(@movie.title)
+        click_link 'Create Viewing Party for Movie'
+
+        body = File.read('spec/fixtures/vcr_cassettes/dark_phoenix_detail_page.json')
+        json_response = JSON.parse(body, symbolize_names: true)
+        test = JSON.parse(json_response[:http_interactions][0][:response][:body][:string], symbolize_names: true )
+
+        @movie = Moovee.new(test)
+
+        expect(page).to have_content("Your Viewing Party Details")
+
+        within(".new-party-form") do
+          expect(page).to have_content(@movie.title)
+        end
       end
     end
 
