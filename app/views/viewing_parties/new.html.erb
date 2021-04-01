@@ -1,0 +1,29 @@
+<h1>Your Viewing Party Details</h1>
+
+<section class="new-party-form">
+  <%= form_with url: viewing_parties_new_path, method: :create, local: true do |f| %>
+  <%= f.label :title, 'Title' %>
+  <%= f.text_field :title, value: @movie.title, :readonly => true %>
+
+  <%= f.label :duration, 'Duration of Party' %>
+  <%= f.number_field :duration, value: @movie.duration %><br><br>
+
+  <%= f.label :date, 'Date' %>
+  <%= f.date_field :date %><br><br>
+
+  <%= f.label :start_time, 'Start Time' %>
+  <%= f.time_field :start_time %><br><br>
+
+  <p>Invite some friends:</p>
+  <% current_user.friends_email.each do |email|  %>
+    <%= f.check_box email %>
+    <%= f.label email %>
+  <% end %>
+
+
+  <%= f.hidden_field :api_id, :value => @movie.api_id %>
+
+  <%= f.submit "Create Party"  %>
+<% end %>
+
+</section>

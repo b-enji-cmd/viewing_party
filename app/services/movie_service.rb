@@ -16,7 +16,6 @@ class MovieService < ApiService
   def self.search_movie(title)
     page = 1
     matching_movies = []
-    #
 
     until matching_movies.length == 40
       search_endpoint = "https://api.themoviedb.org/3/search/movie?api_key=#{ENV["movies_secret"]}&language=en-US&query=#{title}&page=#{page}"

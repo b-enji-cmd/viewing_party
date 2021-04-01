@@ -1,7 +1,6 @@
-
 <h1><%= @movie.title %></h1>
 
-<%= link_to "Create Viewing Party for Movie", viewing_parties_new_path %><br>
+<%= link_to "Create Viewing Party for Movie", viewing_parties_new_path(:info => {title: @movie.title, api_id: @movie.api_id, duration: @movie.runtime })%><br>
 
 <section id="movie-details">
   <p>Vote Average: <%= @movie.vote_average %></p>
@@ -23,6 +22,7 @@
 </section><hr>
 
 
+
 <h2>Cast</h2>
 <section id="cast-section">
 	<% @cast.each_with_index do |member,index| %>
@@ -41,3 +41,4 @@
 			</section>
 	<% end %>
 </section>
+
