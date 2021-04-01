@@ -34,5 +34,29 @@ RSpec.describe 'Authenticated User' do
 
       end
     end
+
+    it "should display information about the cast" do
+     VCR.use_cassette('dark_phoenix_cast_details') do
+        visit('/movies/320288')
+        within("#cast-section") do
+          within("#member-0") do
+            expect(page).to have_content("Sophie Turner as Jean Grey / Dark Phoenix")
+          end
+        end
+      end
+    end
+
+    it "should display information about the reviews" do
+      VCR.use_cassette('dark_phoenix_review_details') do
+        visit('/movies/320288')
+        expect(page).to have_content "8 Reviews"
+        within("#reviews") do
+          within("#review-0") do
+            expect(page).to have_content("SWITCH.")
+            expect(page).to have_content("It’s just a shame") #what a way to start a review
+          end
+        end
+      end
+    end
   end
 end
