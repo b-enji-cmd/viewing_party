@@ -21,7 +21,19 @@
 	</section>
 
 	<section class="viewing-parties">
-		<p>Placeholder!</p>
-			<%@user.parties.each do |party| %>
-			<% end %>
+		<h2>Viewing Parties</h2>
+		<% if current_user.parties.empty? %>
+			<p>Friends haven't invited you to a viewing party yet!</p>
+		<% else %>
+			<%current_user.parties.each do |party| %>
+				<%= link_to "#{party.movie_title}", "movies/#{party.api_id}" %><br>
+				<%= party.date.strftime("%A, %d %b %Y") %><br>
+				<%= party.start_time %><br>
+				<% if party.user_id == current_user.id %>
+					<p>Hosting</p>
+				<% else %>
+					<p>Invited</p>
+				<% end %>
+			 <% end %><hr>
+		<% end %>
 	</section>

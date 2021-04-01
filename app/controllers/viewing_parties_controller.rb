@@ -10,14 +10,18 @@ class ViewingPartiesController < ApplicationController
 
   def create
     @movie = Movie.find_by(api_id: params[:api_id].to_i)
-    binding.pry
+
     if params[:duration].to_i >= @movie.duration
       @party = Party.create!(
+                          movie_title: @movie.title,
+                          api_id: @movie.api_id,
                           duration: params[:duration],
                           date: params[:date],
                           start_time: params[:start_time],
                           user_id: current_user.id
                         )
+      current_user.parties << @party
+      binding.pry
       flash.notice = "Your party has been created!"
       redirect_to dashboard_path
     else
