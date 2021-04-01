@@ -21,7 +21,6 @@ class ViewingPartiesController < ApplicationController
                           user_id: current_user.id
                         )
       current_user.parties << @party
-      binding.pry
       flash.notice = "Your party has been created!"
       redirect_to dashboard_path
     else

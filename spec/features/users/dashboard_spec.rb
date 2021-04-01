@@ -29,7 +29,7 @@ RSpec.describe 'Authenticated User' do
 
     it 'has a viewing party section' do
       within(".viewing-parties") do
-        expect(page).to have_content("Placeholder!")
+        expect(page).to have_content("Friends haven't invited you to a viewing party yet!")
       end
     end
   end
@@ -85,7 +85,7 @@ RSpec.describe 'Authenticated User' do
         fill_in 'email', with: "AnOtHeR@email.com"
 
         click_button "Add Friend"
-        
+
         expect(page).to have_content(another_friend.email)
         expect(page).to_not have_content("You currently have no friends.")
       end

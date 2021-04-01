@@ -9,7 +9,7 @@ RSpec.describe 'Authenticated User' do
   describe "movie show page" do
     it "have button to create viewing party and display movie details" do
 
-      VCR.use_cassette('dark_phoenix_detail_page', :serialize_with => :json) do
+      VCR.use_cassette('dark_phoenix_detail_page') do
         visit('/movies/320288')
         body = File.read('spec/fixtures/vcr_cassettes/dark_phoenix_detail_page.json')
         json_response = JSON.parse(body, symbolize_names: true)
