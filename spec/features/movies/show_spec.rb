@@ -13,11 +13,11 @@ RSpec.describe 'Authenticated User' do
         visit('/movies/320288')
         body = File.read('spec/fixtures/vcr_cassettes/dark_phoenix_detail_page.json')
         json_response = JSON.parse(body, symbolize_names: true)
-        test = JSON.parse(json_response[:http_interactions][0][:response][:body][:string], symbolize_names: true )
+
 
         expect(page).to have_link('Create Viewing Party for Movie')
 
-        @movie = Moovee.new(test)
+        @movie = Moovee.new(json_response)
         expect(page).to have_content(@movie.title)
 
         within("#movie-details") do

@@ -11,9 +11,9 @@ RSpec.describe 'As Authenticated User' do
 
       body = File.read('spec/fixtures/vcr_cassettes/dark_phoenix_detail_page.json')
       json_response = JSON.parse(body, symbolize_names: true)
-      test = JSON.parse(json_response[:http_interactions][0][:response][:body][:string], symbolize_names: true )
 
-      @movie = Moovee.new(test)
+
+      @movie = Moovee.new(json_response)
     end
 
     it 'I see the the name of the movie title rendered above a form' do
