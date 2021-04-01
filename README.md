@@ -43,7 +43,7 @@ For this project, you will be building an application to explore movies and crea
 
 
 ## Database Design Document
-![Database Design Document](https://imgur.com/wvTvunI)
+![Database Design Document](https://imgur.com/wvTvunI.png)
 
 
 <!-- GETTING STARTED -->
