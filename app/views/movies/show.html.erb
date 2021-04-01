@@ -25,11 +25,11 @@
 <section id="recommendations">
   <p>Other movies you may enjoy:</p>
   <ul>
-    <% if @movie.recommendations.nil? %>
+    <% if @recommendations.nil? %>
       <p>No recommendations found.</p>
     <% else %>
-      <% @movie.recommendations.each do |recommendation| %>
-        <li><%= recommendation %></li>
+      <% @recommendations.each do |recommendation| %>
+        <li><%= recommendation.title %></li>
       <% end %>
     <% end %>
   </ul>

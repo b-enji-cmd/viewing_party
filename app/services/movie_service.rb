@@ -63,9 +63,10 @@ class MovieService < ApiService
     recommendations_endpoint = "https://api.themoviedb.org/3/movie/#{id}/recommendations?api_key=#{ENV['movies_secret']}&language=en-US&page=1"
     parsed_recommendations = get_data(recommendations_endpoint)
       parsed_recommendations[:results].each do |movie|
-        suggestions << Moovee.new(movie)
+        suggestions << Recommendation.new(movie)
       end
     suggestions
+    # require "pry";binding.pry
   end
   # MOVING THIS METHOD TO THE ACTION WHICH IS THE RESULT OF CREATING A VIEWING PARTY
   # def self.create_data(endpoint)
