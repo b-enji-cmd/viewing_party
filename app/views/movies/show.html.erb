@@ -20,3 +20,24 @@
 <section id="movie-summary">
   <p>Summary:<br><br> <%= @movie.summary %></p>
 </section><hr>
+
+
+<h2>Cast</h2>
+<section id="cast-section">
+	<% @cast.each_with_index do |member,index| %>
+		<section id="member-<%= index %>">
+			<p> <%= member.name %> as <%= member.character %> </p>	
+		</section>
+	<% end %>
+</section>
+
+<h2> <%= @reviews.length %> Reviews</h2>
+<section id="reviews">
+	<% @reviews.each_with_index do |review,index| %>
+			<section id="review-<%= index %>">
+				<p><%= review.author %> </p>
+				<p><%= review.content %> </p> 
+			</section>
+	<% end %>
+</section>
+
