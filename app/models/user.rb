@@ -13,5 +13,5 @@ class User < ApplicationRecord
     friends.map do |friend|
       User.find(friend.friend_id).email
     end
-  end
+  end 
 end

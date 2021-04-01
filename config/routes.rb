@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/movies/:id', to: 'movies#show'
 
   get '/viewing_parties/new', to: 'viewing_parties#new'
-  post '/viewing_parties', to: 'viewing_parties#create'
+  post '/viewing_parties/new', to: 'viewing_parties#create'
   get '/viewing_parties', to: 'viewing_parties#index'
 
   resources :users, only: [:create]

@@ -14,6 +14,15 @@
   <%= f.label :start_time, 'Start Time' %>
   <%= f.time_field :start_time %><br><br>
 
+  <p>Invite some friends:</p>
+  <% current_user.friends_email.each do |email|  %>
+    <%= f.check_box email %>
+    <%= f.label email %>
+  <% end %>
+
+
+  <%= f.hidden_field :api_id, :value => @movie.api_id %>
+
   <%= f.submit "Create Party"  %>
 <% end %>
 
