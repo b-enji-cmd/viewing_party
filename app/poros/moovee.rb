@@ -22,7 +22,7 @@ class Moovee
   def genres
     @genres.map do |genre_hash|
       genre_hash[:name]
-    end 
+    end
   end
 
 end

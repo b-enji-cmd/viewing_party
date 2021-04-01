@@ -33,16 +33,21 @@ RSpec.describe 'Authenticated User' do
       end
     end
 
-    xit "should take me to the movies page after clicking either" do
-      click_button "Find Top Rated Movies"
-      expect(current_path).to eq(movies_path)
-
-      visit discover_path
-      within("#movie-search") do
-        fill_in :q , with: "Phoenix"
-        click_button "Search"
+    it "should take me to the movies page after clicking top rated movies" do
+      VCR.use_cassette('discover_top_rated') do
+        click_button "Find Top Rated Movies"
+        expect(current_path).to eq(movies_path)
       end
-      expect(current_path).to eq(movies_path)
+    end
+
+    it "should take me to the movies page after searching for a movie" do
+      VCR.use_cassette('discover_search') do
+        within("#movie-search") do
+          fill_in :q , with: "Phoenix"
+          click_button "Search"
+        end
+        expect(current_path).to eq(movies_path)
+      end
     end
   end
 end

@@ -19,4 +19,14 @@ RSpec.describe User, type: :model do
     it {should validate_length_of(:password).is_at_least(8)}
     it {should validate_confirmation_of :password}
   end
+
+  describe "instance methods" do
+    it "#friends_email" do
+      @user = User.create!(email: "winner@email.fr", password: "hellomovies2021")
+      @user_1 = User.create!(email: "loser@email.fr", password: "superduper")
+      UserFriend.create!(user_id: @user.id, friend_id: @user_1.id)
+
+      expect(@user.friends_email).to eq ["loser@email.fr"]
+    end
+  end
 end
